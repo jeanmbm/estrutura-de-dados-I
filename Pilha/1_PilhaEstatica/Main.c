@@ -2,16 +2,15 @@
 #include <stdlib.h>
 #include "PilhaEstatica.c"
 
-int main
+int main()
 {
-
   int saida = 1;
-  int escolha;
-  Pilha *pilha;
+  int escolha, aux;
+  Pilha *pilha = NULL;
   while (saida == 1)
   {
     printf("\n\n============== MENU ==============");
-    printf("\n\nInforme uma das opções:");
+    printf("\n\nInforme uma das opcoes:");
     printf("\n1 - Criar uma pilha"); //
     printf("\n2 - Empilhar elemento (PUSH)");
     printf("\n3 - Desempilhar (POP)");
@@ -32,32 +31,61 @@ int main
       break;
 
     case 2:
-      int valor;
-      printf("\nDigite um valor inteiro para ser empilhado: ");
-      scanf("%d", &valor);
-      int aux = push(pilha, valor);
+      struct aluno alunoAdd;
+      printf("\nDigite o nome do aluno: ");
+      scanf("%s", alunoAdd.nome);
+      printf("\nDigite o numero de matricula do aluno: ");
+      scanf("%d", &alunoAdd.matricula);
+      printf("\nDigite o valor da N1: ");
+      scanf("%f", &alunoAdd.n1);
+      printf("\nDigite o valor da N2: ");
+      scanf("%f", &alunoAdd.n2);
+      printf("\nDigite o valor da N3: ");
+      scanf("%f", &alunoAdd.n3);
+
+      aux = push(pilha, alunoAdd);
+      if (aux == -1)
+        printf("\nA pilha é nula");
+      else if (aux == 0)
+        printf("\nA pilha está cheia");
+      else
+        printf("\n!! Elemento inserido com sucesso !!");
       break;
 
     case 3:
-
+      aux = pop(pilha);
+      if (aux == -1)
+        printf("\nA pilha é nula");
+      else if (aux == 0)
+        printf("\nA pilha está vazia");
+      else
+        printf("\n!! Elemento retirado com sucesso !!");
       break;
 
     case 4:
-
+      printf("\nToDo !!");
+      //      struct aluno alunoStackpop;
+      //    aux = stackpop(pilha, alunoStackpop);
+      //      if (aux == -1)
+      //        printf("\nA pilha é nula");
+      //      else if (aux == 0)
+      //        printf("\nA pilha está vazia");
+      //      else
+      //        printf("\nValor do topo: %d", aux);
       break;
 
     case 5:
-      int aux = size(pilha);
+      aux = size(pilha);
       if (aux == -1)
-        printf("A pilha informada é nula");
+        printf("A pilha é nula");
       else
-        printf("\nTamanho: %d", % aux);
+        printf("\nTamanho: %d", aux);
       break;
 
     case 6:
-      int aux = isFull(pilha);
+      aux = isFull(pilha);
       if (aux == -1)
-        printf("\nA pilha informada é nula");
+        printf("\nA pilha é nula");
       else if (aux == 0)
         printf("\nA pilha não está cheia");
       else
@@ -65,9 +93,9 @@ int main
       break;
 
     case 7:
-      int aux = isEmpty(pilha);
+      aux = isEmpty(pilha);
       if (aux == -1)
-        printf("A pilha informada é nula");
+        printf("A pilha é nula");
       else if (aux == 0)
         printf("A pilha não está vazia");
       else
@@ -78,10 +106,13 @@ int main
       imprimePilha(pilha);
       break;
 
-    default:
+    case 0:
       saida = 0;
       liberaPilha(pilha);
       break;
+
+    default:
+      printf("!!! Opção invalida !!!");
     }
   }
 }

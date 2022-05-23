@@ -6,12 +6,12 @@
 struct pilha
 {
   int topo;
-  int dados[MAXPILHA];
+  struct aluno dados[MAXPILHA];
 };
 
 Pilha *criarPilha()
 {
-  Pilha *pilha = (Pilha *)malloc(sizeof(struct Pilha));
+  Pilha *pilha = (Pilha *)malloc(sizeof(struct pilha));
   if (pilha != NULL)
     pilha->topo = -1;
   return pilha;
@@ -47,14 +47,15 @@ int size(Pilha *pilha)
   return pilha->topo + 1;
 }
 
-int push(Pilha *pilha, int dado)
+int push(Pilha *pilha, struct aluno dado)
 {
   if (pilha == NULL)
     return -1;
   if (isFull(pilha))
     return 0;
-  pilha->topo < -pilha->topo + 1;
-  pilha->dados[pilha->topo] < -dado;
+  // pilha->topo = (pilha->topo + 1);
+  pilha->topo++;
+  pilha->dados[pilha->topo] = dado;
   return 1;
 }
 
@@ -64,17 +65,19 @@ int pop(Pilha *pilha)
     return -1;
   if (isEmpty(pilha))
     return 0;
-  pilha->topo < -pilha->topo - 1;
+  // pilha->topo = pilha->topo - 1;
+  pilha->topo--;
   return 1;
 }
 
-int stackpop(Pilha *pilha)
+int stackpop(Pilha *pilha, struct aluno *aluno)
 {
   if (pilha == NULL)
     return -1;
   if (isEmpty(pilha))
     return 0;
-  return pilha->dados[pilha->topo];
+  *aluno = pilha->dados[pilha->topo];
+  return 1;
 }
 
 void imprimePilha(Pilha *pilha)
@@ -83,8 +86,14 @@ void imprimePilha(Pilha *pilha)
     return;
   printf("\n======= PILHA =======\n");
   int i;
-  for (i = 0; i < pilha->topo + 1; i++)
+  for (i = pilha->topo; i >= 0; i--)
   {
-    printf("%d", pilha->dados[i]);
+    printf("Matricula: %d\n", pilha->dados[i].matricula);
+    printf("Nome: %s\n", pilha->dados[i].nome);
+    printf("Notas:\n");
+    printf("\tN1: %.2f\n", pilha->dados[i].n1);
+    printf("\tN2: %.2f\n", pilha->dados[i].n2);
+    printf("\tN3: %.2f\n", pilha->dados[i].n3);
+    printf("---------------------------------------------------------\n");
   }
 }

@@ -1,13 +1,20 @@
-#define MAXPILHA = 40;
+#define MAXPILHA 50
+
+struct aluno
+{
+  int matricula;
+  char nome[30];
+  float n1, n2, n3;
+};
 
 typedef struct pilha Pilha;
 
 Pilha *criarPilha();
 void liberaPilha(Pilha *pilha);
-int push(Pilha *pilha, int dado);
+int push(Pilha *pilha, struct aluno dado);
 int pop(Pilha *pilha);
 int size(Pilha *pilha);
-int stackpop(Pilha *pilha);
-int empty(Pilha *pilha);
-int full(Pilha *pilha);
+int stackpop(Pilha *pilha, struct aluno *aluno);
+int isEmpty(Pilha *pilha);
+int isFull(Pilha *pilha);
 void imprimePilha(Pilha *pilha);
