@@ -13,7 +13,7 @@ int main()
     printf("\n\nInforme uma das opcoes:");
     printf("\n1 - Criar uma pilha"); //
     printf("\n2 - Empilhar elemento (PUSH)");
-    printf("\n3 - Desempilhar (POP)");
+    printf("\n3 - Desempilhar elemento (POP)");
     printf("\n4 - Pegar elemento do topo (STACKPOP)");
     printf("\n5 - Verificar tamanho");       //
     printf("\n6 - Verificar se esta cheia"); //
@@ -27,57 +27,68 @@ int main()
     {
     case 1:
       pilha = criarPilha();
-      printf("\nPilha criada!");
+      printf("\n!! Pilha criada !!");
       break;
 
     case 2:
-      struct aluno alunoAdd;
-      printf("\nDigite o nome do aluno: ");
-      scanf("%s", alunoAdd.nome);
-      printf("\nDigite o numero de matricula do aluno: ");
-      scanf("%d", &alunoAdd.matricula);
-      printf("\nDigite o valor da N1: ");
-      scanf("%f", &alunoAdd.n1);
-      printf("\nDigite o valor da N2: ");
-      scanf("%f", &alunoAdd.n2);
-      printf("\nDigite o valor da N3: ");
-      scanf("%f", &alunoAdd.n3);
-
-      aux = push(pilha, alunoAdd);
-      if (aux == -1)
-        printf("\nA pilha é nula");
-      else if (aux == 0)
-        printf("\nA pilha está cheia");
+      if (pilha == NULL)
+      {
+        printf("\nA pilha e nula");
+        
+      }
+      else if (isFull(pilha) == 1)
+      {
+        printf("\nA pilha esta cheia");
+      }
       else
-        printf("\n!! Elemento inserido com sucesso !!");
+      {
+        struct aluno alunoAdd;
+        printf("\nDigite o nome do aluno: ");
+        scanf("%s", alunoAdd.nome);
+        printf("Digite o numero de matricula do aluno: ");
+        scanf("%d", &alunoAdd.matricula);
+        printf("Digite o valor da N1: ");
+        scanf("%f", &alunoAdd.n1);
+        printf("Digite o valor da N2: ");
+        scanf("%f", &alunoAdd.n2);
+        printf("Digite o valor da N3: ");
+        scanf("%f", &alunoAdd.n3);
+
+        aux = push(pilha, alunoAdd);
+
+        if (aux != 1)
+          printf("\n!! Nao foi possivel empilhar !!");
+        else
+          printf("\n!! Elemento inserido com sucesso !!");
+      }
       break;
 
     case 3:
       aux = pop(pilha);
       if (aux == -1)
-        printf("\nA pilha é nula");
+	  	printf("\nA pilha e nula");
       else if (aux == 0)
-        printf("\nA pilha está vazia");
+        printf("\nA pilha esta vazia");
       else
         printf("\n!! Elemento retirado com sucesso !!");
       break;
 
     case 4:
       printf("\nToDo !!");
-      //      struct aluno alunoStackpop;
-      //    aux = stackpop(pilha, alunoStackpop);
-      //      if (aux == -1)
-      //        printf("\nA pilha é nula");
-      //      else if (aux == 0)
-      //        printf("\nA pilha está vazia");
-      //      else
-      //        printf("\nValor do topo: %d", aux);
+	  struct aluno alunoStackpop;
+	  aux = stackpop(pilha, alunoStackpop);
+	  if (aux == -1)
+	  	printf("\nA pilha é nula");
+	  else if (aux == 0)
+	  	printf("\nA pilha está vazia");
+	  else
+	  	printf("\nValor do topo: %d", aux);
       break;
 
     case 5:
       aux = size(pilha);
       if (aux == -1)
-        printf("A pilha é nula");
+        printf("A pilha e nula");
       else
         printf("\nTamanho: %d", aux);
       break;
@@ -85,21 +96,21 @@ int main()
     case 6:
       aux = isFull(pilha);
       if (aux == -1)
-        printf("\nA pilha é nula");
+        printf("\nA pilha e nula");
       else if (aux == 0)
-        printf("\nA pilha não está cheia");
+        printf("\nA pilha nao esta cheia");
       else
-        printf("\nA pilha está cheia");
+        printf("\nA pilha esta cheia");
       break;
 
     case 7:
       aux = isEmpty(pilha);
       if (aux == -1)
-        printf("A pilha é nula");
+        printf("A pilha e nula");
       else if (aux == 0)
-        printf("A pilha não está vazia");
+        printf("A pilha nao esta vazia");
       else
-        printf("A pilha está vazia");
+        printf("A pilha esta vazia");
       break;
 
     case 8:
@@ -112,7 +123,7 @@ int main()
       break;
 
     default:
-      printf("!!! Opção invalida !!!");
+      printf("!!! Opcao invalida !!!");
     }
   }
 }

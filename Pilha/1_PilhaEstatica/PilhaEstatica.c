@@ -50,11 +50,11 @@ int size(Pilha *pilha)
 int push(Pilha *pilha, struct aluno dado)
 {
   if (pilha == NULL)
-    return -1;
+
+0    return -1;
   if (isFull(pilha))
     return 0;
-  // pilha->topo = (pilha->topo + 1);
-  pilha->topo++;
+  pilha->topo = (pilha->topo + 1);
   pilha->dados[pilha->topo] = dado;
   return 1;
 }
@@ -65,8 +65,7 @@ int pop(Pilha *pilha)
     return -1;
   if (isEmpty(pilha))
     return 0;
-  // pilha->topo = pilha->topo - 1;
-  pilha->topo--;
+  pilha->topo = pilha->topo - 1;
   return 1;
 }
 
