@@ -50,8 +50,7 @@ int size(Pilha *pilha)
 int push(Pilha *pilha, struct aluno dado)
 {
   if (pilha == NULL)
-
-0    return -1;
+    return -1;
   if (isFull(pilha))
     return 0;
   pilha->topo = (pilha->topo + 1);
@@ -87,12 +86,26 @@ void imprimePilha(Pilha *pilha)
   int i;
   for (i = pilha->topo; i >= 0; i--)
   {
-    printf("Matricula: %d\n", pilha->dados[i].matricula);
     printf("Nome: %s\n", pilha->dados[i].nome);
+    printf("Matricula: %d\n", pilha->dados[i].matricula);
     printf("Notas:\n");
     printf("\tN1: %.2f\n", pilha->dados[i].n1);
     printf("\tN2: %.2f\n", pilha->dados[i].n2);
     printf("\tN3: %.2f\n", pilha->dados[i].n3);
+    printf("Index: %d\n", i);
     printf("---------------------------------------------------------\n");
   }
 }
+
+// int concatenaPilha(Pilha *pilha1, Pilha *pilha2)
+//{
+//   if (pilha1 == NULL || pilha2 == NULL)
+//   {
+//     return 0;
+//   }
+//   else
+//   {
+//     Pilha *p = criarPilha();
+//
+//   }
+// }

@@ -1,4 +1,6 @@
 // FilaEstatica.c
+#include <stdio.h>
+#include <stdlib.h>
 #include "FilaEstatica.h"
 
 struct fila
@@ -77,4 +79,22 @@ int consulta_Queue(Queue *que, struct aluno *al)
     return 0;
   *al = que->dados[que->inicio];
   return 1;
+}
+
+void imprimirFila(Queue *que)
+{
+  if (que == NULL)
+    return;
+  printf("\n======= PILHA =======\n");
+  int i;
+  for (i = 0; i < que->qtd; i++)
+  {
+    printf("Nome: %s\n", que->dados[i].nome);
+    printf("Matricula: %d\n", que->dados[i].matricula);
+    printf("Notas:\n");
+    printf("\tN1: %.2f\n", que->dados[i].n1);
+    printf("\tN2: %.2f\n", que->dados[i].n2);
+    printf("\tN3: %.2f\n", que->dados[i].n3);
+    printf("---------------------------------------------------------\n");
+  }
 }

@@ -18,3 +18,4 @@ int isEmpty(Queue *que);
 int enqueue(Queue *que, struct aluno al);
 int dequeue(Queue *que);
 int consulta_Queue(Queue *que, struct aluno *al);
+void imprimirFila(Queue *que);

@@ -7,11 +7,13 @@ int main()
   int saida = 1;
   int escolha, aux;
   Pilha *pilha = NULL;
+  struct aluno alunoStackpop;
+
   while (saida == 1)
   {
     printf("\n\n============== MENU ==============");
     printf("\n\nInforme uma das opcoes:");
-    printf("\n1 - Criar uma pilha"); //
+    printf("\n1 - Criar pilha"); //
     printf("\n2 - Empilhar elemento (PUSH)");
     printf("\n3 - Desempilhar elemento (POP)");
     printf("\n4 - Pegar elemento do topo (STACKPOP)");
@@ -34,7 +36,6 @@ int main()
       if (pilha == NULL)
       {
         printf("\nA pilha e nula");
-        
       }
       else if (isFull(pilha) == 1)
       {
@@ -66,7 +67,7 @@ int main()
     case 3:
       aux = pop(pilha);
       if (aux == -1)
-	  	printf("\nA pilha e nula");
+        printf("\nA pilha e nula");
       else if (aux == 0)
         printf("\nA pilha esta vazia");
       else
@@ -74,15 +75,25 @@ int main()
       break;
 
     case 4:
-      printf("\nToDo !!");
-	  struct aluno alunoStackpop;
-	  aux = stackpop(pilha, alunoStackpop);
-	  if (aux == -1)
-	  	printf("\nA pilha é nula");
-	  else if (aux == 0)
-	  	printf("\nA pilha está vazia");
-	  else
-	  	printf("\nValor do topo: %d", aux);
+      aux = stackpop(pilha, &alunoStackpop);
+      if (aux == -1)
+      {
+        printf("\nA pilha é nula");
+      }
+      else if (aux == 0)
+      {
+        printf("\nA pilha está vazia");
+      }
+      else
+      {
+        printf("\nValor do topo:");
+        printf("\tNome: %s\n", alunoStackpop.nome);
+        printf("\tMatricula: %d\n", alunoStackpop.matricula);
+        printf("\tNotas:\n");
+        printf("\t\tN1: %.2f\n", alunoStackpop.n1);
+        printf("\t\tN2: %.2f\n", alunoStackpop.n2);
+        printf("\t\tN3: %.2f\n", alunoStackpop.n3);
+      }
       break;
 
     case 5:
@@ -124,6 +135,9 @@ int main()
 
     default:
       printf("!!! Opcao invalida !!!");
+      break;
     }
   }
+  liberaPilha(pilha);
+  return 0;
 }
