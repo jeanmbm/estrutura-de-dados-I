@@ -1,26 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "FilaEstatica.h"
+#include "FilaEstatica.c"
 
 int main()
 {
   int saida = 1;
   int escolha, aux;
   Queue *fila = NULL;
+  struct aluno alunoConsulta;
 
-  while (saida = 1)
+  while (saida == 1)
   {
     printf("\n\n============== MENU ==============");
     printf("\n\nInforme uma das opcoes:");
-    printf("\n1 - Criar fila"); //
+    printf("\n1 - Criar fila"); 
     printf("\n2 - Enfileirar elemento (Enqueue)");
     printf("\n3 - Desenfileirar elemento (Dequeue)");
     printf("\n4 - Consultar primeiro elemento da fila");
-    printf("\n5 - Verificar tamanho");       //
-    printf("\n6 - Verificar se esta cheia"); //
-    printf("\n7 - Verificar se esta vazia"); //
-    printf("\n8 - Imprimir fila");           //
-    printf("\n0 - Sair");                    //
+    printf("\n5 - Verificar tamanho");       
+    printf("\n6 - Verificar se esta cheia"); 
+    printf("\n7 - Verificar se esta vazia"); 
+    printf("\n8 - Imprimir fila");          
+    printf("\n0 - Sair");                    
     printf("\n\nEscolha: ");
     scanf("%d", &escolha);
 
@@ -64,7 +65,8 @@ int main()
       break;
 
     case 3:
-      aux = enqueue(fila);
+      aux = dequeue(fila);
+
       if (aux == -1)
         printf("\nA fila e nula");
       else if (aux == 0)
@@ -74,11 +76,29 @@ int main()
       break;
 
     case 4:
-      /* code */
+      aux = consulta_Queue(fila, &alunoConsulta);
+      if (aux == -1)
+      {
+        printf("\nA fila é nula");
+      }
+      else if (aux == 0)
+      {
+        printf("\nA fila está vazia");
+      }
+      else
+      {
+        printf("\nPrimeiro da fila:");
+        printf("\n\tNome: %s\n", alunoConsulta.nome);
+        printf("\tMatricula: %d\n", alunoConsulta.matricula);
+        printf("\tNotas:\n");
+        printf("\t\tN1: %.2f\n", alunoConsulta.n1);
+        printf("\t\tN2: %.2f\n", alunoConsulta.n2);
+        printf("\t\tN3: %.2f\n", alunoConsulta.n3);
+      }
       break;
 
     case 5:
-      aux = tamanho_Queue(pilha);
+      aux = tamanho_Queue(fila);
       if (aux == -1)
         printf("A fila e nula");
       else
@@ -120,5 +140,6 @@ int main()
     }
   }
 
+  libera_Queue(fila);
   return 0;
 }

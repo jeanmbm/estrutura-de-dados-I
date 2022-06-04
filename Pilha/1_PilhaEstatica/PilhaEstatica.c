@@ -53,7 +53,7 @@ int push(Pilha *pilha, struct aluno dado)
     return -1;
   if (isFull(pilha))
     return 0;
-  pilha->topo = (pilha->topo + 1);
+  pilha->topo++;
   pilha->dados[pilha->topo] = dado;
   return 1;
 }
@@ -97,15 +97,21 @@ void imprimePilha(Pilha *pilha)
   }
 }
 
-// int concatenaPilha(Pilha *pilha1, Pilha *pilha2)
-//{
-//   if (pilha1 == NULL || pilha2 == NULL)
-//   {
-//     return 0;
-//   }
-//   else
-//   {
-//     Pilha *p = criarPilha();
-//
-//   }
-// }
+int concatenaPilha(Pilha *pilha1, Pilha *pilha2)
+{
+  if (pilha1 == NULL || pilha2 == NULL)
+  {
+    return 0;
+  }
+  else
+  {
+    Pilha *p = criarPilha();
+
+    for (int i = pilha1->topo; i >= 0; i--)
+    {
+      /* code */
+    }
+
+    return p;
+  }
+}

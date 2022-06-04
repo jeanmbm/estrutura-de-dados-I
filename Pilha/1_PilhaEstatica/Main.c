@@ -66,6 +66,7 @@ int main()
 
     case 3:
       aux = pop(pilha);
+
       if (aux == -1)
         printf("\nA pilha e nula");
       else if (aux == 0)
@@ -138,6 +139,7 @@ int main()
       break;
     }
   }
+
   liberaPilha(pilha);
   return 0;
 }

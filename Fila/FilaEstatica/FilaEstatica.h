@@ -1,4 +1,7 @@
 // FilaEstatica.h
+#include <stdio.h>
+#include <stdlib.h>
+
 #define MAX 50
 
 struct aluno
@@ -10,7 +13,7 @@ struct aluno
 
 typedef struct fila Queue;
 
-Queue cria_Queue();
+Queue *cria_Queue();
 void libera_Queue(Queue *que);
 int tamanho_Queue(Queue *que);
 int isFull(Queue *que);

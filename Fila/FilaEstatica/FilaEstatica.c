@@ -37,6 +37,7 @@ int isFull(Queue *que)
 {
   if (que == NULL)
     return -1;
+
   if (que->qtd == MAX)
     return 1;
   else
@@ -47,6 +48,7 @@ int isEmpty(Queue *que)
 {
   if (que == NULL)
     return -1;
+
   if (que->qtd == 0)
     return 1;
   else
@@ -56,18 +58,25 @@ int isEmpty(Queue *que)
 int enqueue(Queue *que, struct aluno al)
 {
   if (que == NULL)
-    return 0;
+    return -1;
+
   if (isFull(que))
     return 0;
+
   que->dados[que->final] = al;
   que->final = (que->final + 1) % MAX;
   que->qtd++;
   return 1;
 }
+
 int dequeue(Queue *que)
 {
-  if (que = NULL || isEmpty(que))
+  if (que == NULL)
+    return -1;
+
+  if (isEmpty(que))
     return 0;
+
   que->inicio = (que->inicio + 1) % MAX;
   que->qtd--;
   return 1;
@@ -85,7 +94,7 @@ void imprimirFila(Queue *que)
 {
   if (que == NULL)
     return;
-  printf("\n======= PILHA =======\n");
+  printf("\n======= FILA =======\n");
   int i;
   for (i = 0; i < que->qtd; i++)
   {
