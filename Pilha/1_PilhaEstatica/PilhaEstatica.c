@@ -97,21 +97,29 @@ void imprimePilha(Pilha *pilha)
   }
 }
 
-int concatenaPilha(Pilha *pilha1, Pilha *pilha2)
+Pilha *concatenaPilha(Pilha *pilha1, Pilha *pilha2)
 {
   if (pilha1 == NULL || pilha2 == NULL)
   {
-    return 0;
+    printf("!!!  Nao foi possovel concatenar as pilhas  !!!");
+    return;
   }
   else
   {
     Pilha *p = criarPilha();
 
-    for (int i = pilha1->topo; i >= 0; i--)
+    int i;
+    for (i = 0; i <= pilha1->topo; i++)
     {
-      /* code */
+      p->dados[i] = pilha1->dados[i];
+      p->topo++;
     }
 
+    for (i = (p->topo + 1); i <= (pilha2->topo + (p->topo + 1)); i++)
+    {
+      p->dados[i] = pilha2->dados[i - (p->topo + 1)];
+      p->topo++;
+    }
     return p;
   }
 }

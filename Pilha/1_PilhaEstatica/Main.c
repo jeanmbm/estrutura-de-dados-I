@@ -7,21 +7,23 @@ int main()
   int saida = 1;
   int escolha, aux;
   Pilha *pilha = NULL;
+  Pilha *pilhaConcat = criarPilha();
   struct aluno alunoStackpop;
 
   while (saida == 1)
   {
     printf("\n\n============== MENU ==============");
     printf("\n\nInforme uma das opcoes:");
-    printf("\n1 - Criar pilha"); //
+    printf("\n1 - Criar pilha");
     printf("\n2 - Empilhar elemento (PUSH)");
     printf("\n3 - Desempilhar elemento (POP)");
     printf("\n4 - Pegar elemento do topo (STACKPOP)");
-    printf("\n5 - Verificar tamanho");       //
-    printf("\n6 - Verificar se esta cheia"); //
-    printf("\n7 - Verificar se esta vazia"); //
-    printf("\n8 - Imprimir pilha");          //
-    printf("\n0 - Sair");                    //
+    printf("\n5 - Verificar tamanho");
+    printf("\n6 - Verificar se esta cheia");
+    printf("\n7 - Verificar se esta vazia");
+    printf("\n8 - Imprimir pilha");
+    printf("\n9 - Concetenar pilhas");
+    printf("\n0 - Sair");
     printf("\n\nEscolha: ");
     scanf("%d", &escolha);
 
@@ -127,6 +129,10 @@ int main()
 
     case 8:
       imprimePilha(pilha);
+      break;
+
+    case 9:
+
       break;
 
     case 0:

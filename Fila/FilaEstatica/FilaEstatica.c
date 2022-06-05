@@ -30,6 +30,7 @@ int tamanho_Queue(Queue *que)
 {
   if (que == NULL)
     return -1;
+
   return que->qtd;
 }
 
@@ -40,6 +41,7 @@ int isFull(Queue *que)
 
   if (que->qtd == MAX)
     return 1;
+
   else
     return 0;
 }
@@ -51,6 +53,7 @@ int isEmpty(Queue *que)
 
   if (que->qtd == 0)
     return 1;
+
   else
     return 0;
 }
@@ -84,8 +87,12 @@ int dequeue(Queue *que)
 
 int consulta_Queue(Queue *que, struct aluno *al)
 {
-  if (que == NULL || isEmpty(que))
+  if (que == NULL)
+    return -1;
+
+  if (isEmpty(que))
     return 0;
+
   *al = que->dados[que->inicio];
   return 1;
 }
@@ -94,9 +101,10 @@ void imprimirFila(Queue *que)
 {
   if (que == NULL)
     return;
+
   printf("\n======= FILA =======\n");
   int i;
-  for (i = 0; i < que->qtd; i++)
+  for (i = que->inicio; i < que->final; i++)
   {
     printf("Nome: %s\n", que->dados[i].nome);
     printf("Matricula: %d\n", que->dados[i].matricula);

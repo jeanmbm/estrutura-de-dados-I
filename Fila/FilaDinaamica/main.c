@@ -73,13 +73,14 @@ int main()
 
     case 4:
       aux = consulta_Fila(fila, &alunoConsulta);
+
       if (aux == -1)
       {
-        printf("\nA fila é nula");
+        printf("\nA fila e nula");
       }
       else if (aux == 0)
       {
-        printf("\nA fila está vazia");
+        printf("\nA fila esta vazia");
       }
       else
       {
@@ -96,7 +97,7 @@ int main()
     case 5:
       aux = tamanho_Fila(fila);
       if (aux == 0)
-        printf("A fila e nula");
+        printf("\nA fila e nula");
       else
         printf("\nTamanho: %d", aux);
       break;
@@ -104,17 +105,17 @@ int main()
     case 6:
       aux = Fila_cheia();
       if (aux == 0)
-        printf("A fila nao esta cheia");
+        printf("\nA fila nao esta cheia");
       break;
 
     case 7:
       aux = Fila_vazia(fila);
       if (aux == -1)
-        printf("A fila e nula");
+        printf("\nA fila e nula");
       else if (aux == 0)
-        printf("A fila nao esta vazia");
+        printf("\nA fila nao esta vazia");
       else
-        printf("A fila esta vazia");
+        printf("\nA fila esta vazia");
       break;
 
     case 8:
@@ -127,7 +128,7 @@ int main()
       break;
 
     default:
-      printf("!!! Opcao invalida !!!");
+      printf("\n\n!!! Opcao invalida !!!\n");
       break;
     }
   }
