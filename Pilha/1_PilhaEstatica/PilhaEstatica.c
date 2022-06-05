@@ -86,40 +86,80 @@ void imprimePilha(Pilha *pilha)
   int i;
   for (i = pilha->topo; i >= 0; i--)
   {
-    printf("Nome: %s\n", pilha->dados[i].nome);
+    printf("\nNome: %s\n", pilha->dados[i].nome);
     printf("Matricula: %d\n", pilha->dados[i].matricula);
     printf("Notas:\n");
     printf("\tN1: %.2f\n", pilha->dados[i].n1);
     printf("\tN2: %.2f\n", pilha->dados[i].n2);
     printf("\tN3: %.2f\n", pilha->dados[i].n3);
     printf("Index: %d\n", i);
-    printf("---------------------------------------------------------\n");
+    printf("\n---------------------------------------------------------\n");
   }
 }
 
-Pilha *concatenaPilha(Pilha *pilha1, Pilha *pilha2)
+int concatenaPilha(Pilha *pilha1, Pilha *pilha2)
 {
   if (pilha1 == NULL || pilha2 == NULL)
   {
-    printf("!!!  Nao foi possovel concatenar as pilhas  !!!");
-    return;
+    printf("!!!  Nao foi possivel concatenar as pilhas  !!!");
+    return 0;
   }
   else
   {
-    Pilha *p = criarPilha();
+    Pilha *aux = criarPilha();
 
-    int i;
-    for (i = 0; i <= pilha1->topo; i++)
+    while (pilha2->topo != -1)
     {
-      p->dados[i] = pilha1->dados[i];
-      p->topo++;
+      struct aluno aluno;
+      stackpop(pilha2, &aluno);
+      push(aux, aluno);
+      pop(pilha2);
     }
 
-    for (i = (p->topo + 1); i <= (pilha2->topo + (p->topo + 1)); i++)
+    while (aux->topo != -1)
     {
-      p->dados[i] = pilha2->dados[i - (p->topo + 1)];
-      p->topo++;
+      struct aluno aluno;
+      stackpop(aux, &aluno);
+      push(pilha1, aluno);
+      pop(aux);
     }
-    return p;
+
+    return 1;
   }
+}
+
+int *copiaPilha(Pilha *pilha, Pilha *copia)
+{
+  if (pilha == NULL)
+    return -1;
+  if (isEmpty(pilha))
+    return 0;
+
+  Pilha *aux = criarPilha();
+
+  while (pilha->topo != -1)
+  {
+    printf("\naqui 1");
+    struct aluno aluno;
+    stackpop(pilha, &aluno);
+    push(aux, aluno);
+    pop(pilha);
+  }
+
+  while (aux->topo != -1)
+  {
+    printf("\n%d", aux->topo);
+    printf("\naqui 2");
+    struct aluno aluno;
+    stackpop(aux, &aluno);
+    printf("\naqui 3");
+    push(pilha, aluno);
+    printf("\naqui 4");
+    push(copia, aluno);
+    printf("\naqui 5");
+    pop(aux);
+    printf("\naqui 6");
+  }
+  liberaPilha(aux);
+  return 1;
 }

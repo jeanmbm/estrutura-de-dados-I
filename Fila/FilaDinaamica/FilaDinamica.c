@@ -74,7 +74,7 @@ int insere_Fila(Fila *fi, struct aluno al)
     return 0;
   no->dados = al;
   no->prox = NULL;
-  if (fi->final == NULL) // fila vazia
+  if (fi->final == NULL)
     fi->inicio = no;
   else
     fi->final->prox = no;
@@ -87,12 +87,12 @@ int remove_Fila(Fila *fi)
 {
   if (fi == NULL)
     return 0;
-  if (fi->inicio == NULL) // fila vazia
+  if (fi->inicio == NULL)
     return 0;
   Elem *no = fi->inicio;
   fi->inicio = fi->inicio->prox;
   free(no);
-  if (fi->inicio == NULL) // fila ficou vazia.
+  if (fi->inicio == NULL)
     fi->final = NULL;
   fi->qtd--;
   return 1;
@@ -115,7 +115,7 @@ void imprime_Fila(Fila *fi)
     return;
   Elem *no = fi->inicio;
 
-  printf("======== FILA ========\n");
+  printf("\n======== FILA ========\n");
   while (no != NULL)
   {
     printf("\nNome: %s\n", no->dados.nome);
@@ -124,7 +124,7 @@ void imprime_Fila(Fila *fi)
     printf("\tN1: %.2f\n", no->dados.n1);
     printf("\tN2: %.2f\n", no->dados.n2);
     printf("\tN3: %.2f\n", no->dados.n3);
-    printf("---------------------------------------------------------\n");
+    printf("\n---------------------------------------------------------\n");
 
     no = no->prox;
   }

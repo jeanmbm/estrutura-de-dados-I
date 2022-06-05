@@ -7,7 +7,8 @@ int main()
   int saida = 1;
   int escolha, aux;
   Pilha *pilha = NULL;
-  Pilha *pilhaConcat = criarPilha();
+  Pilha *pilha2;
+  Pilha *pilhaCopia;
   struct aluno alunoStackpop;
 
   while (saida == 1)
@@ -23,6 +24,7 @@ int main()
     printf("\n7 - Verificar se esta vazia");
     printf("\n8 - Imprimir pilha");
     printf("\n9 - Concetenar pilhas");
+    printf("\n10 - Copiar pilha");
     printf("\n0 - Sair");
     printf("\n\nEscolha: ");
     scanf("%d", &escolha);
@@ -31,6 +33,20 @@ int main()
     {
     case 1:
       pilha = criarPilha();
+      pilha2 = criarPilha();
+
+      struct aluno a[5] = {
+          {1011, "Carla", 5.6, 1.5, 6.8},
+          {1005, "Larisse", 5.1, 7.4, 8.2},
+          {1005, "Jorge", 7.1, 5.4, 9.2},
+          {1005, "Matheus", 5.9, 6.8, 8.3},
+          {1007, "Michael", 6.3, 5.8, 2.5}};
+
+      for (int i = 0; i < 5; i++)
+      {
+        push(pilha2, a[i]);
+      }
+
       printf("\n!! Pilha criada !!");
       break;
 
@@ -81,11 +97,11 @@ int main()
       aux = stackpop(pilha, &alunoStackpop);
       if (aux == -1)
       {
-        printf("\nA pilha é nula");
+        printf("\nA pilha e nula");
       }
       else if (aux == 0)
       {
-        printf("\nA pilha está vazia");
+        printf("\nA pilha esta vazia");
       }
       else
       {
@@ -132,12 +148,23 @@ int main()
       break;
 
     case 9:
-
+      concatenaPilha(pilha, pilha2);
       break;
 
+    case 10:
+      pilhaCopia = criarPilha();
+      copiaPilha(pilha, pilhaCopia);
+
+      printf("\n\n=========================== PILHA 1 =====================================\n");
+      imprimePilha(pilha);
+
+      printf("\n\n=========================== PILHA COPIA =====================================\n");
+      imprimePilha(pilhaCopia);
+      break;
     case 0:
       saida = 0;
       liberaPilha(pilha);
+      liberaPilha(pilha2);
       break;
 
     default:

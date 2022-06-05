@@ -112,6 +112,6 @@ void imprimirFila(Queue *que)
     printf("\tN1: %.2f\n", que->dados[i].n1);
     printf("\tN2: %.2f\n", que->dados[i].n2);
     printf("\tN3: %.2f\n", que->dados[i].n3);
-    printf("---------------------------------------------------------\n");
+    printf("\n---------------------------------------------------------\n");
   }
 }

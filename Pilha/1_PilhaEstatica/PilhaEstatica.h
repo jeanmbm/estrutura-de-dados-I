@@ -18,4 +18,5 @@ int stackpop(Pilha *pilha, struct aluno *aluno);
 int isEmpty(Pilha *pilha);
 int isFull(Pilha *pilha);
 void imprimePilha(Pilha *pilha);
-Pilha *concatenaPilha(Pilha *pilha1, Pilha *pilha2);
+int concatenaPilha(Pilha *pilha1, Pilha *pilha2);
+// Pilha *invertePilha(Pilha *p);
