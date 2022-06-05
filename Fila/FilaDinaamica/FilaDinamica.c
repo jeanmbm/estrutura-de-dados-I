@@ -31,7 +31,7 @@ Fila *cria_Fila()
 
 void libera_Fila(Fila *fi)
 {
-  if (fi = !NULL)
+  if (fi != NULL)
   {
     Elem *no;
     while (fi->inicio != NULL)
@@ -51,7 +51,7 @@ int tamanho_Fila(Fila *fi)
   return fi->qtd;
 }
 
-int Fila_cheia(Fila *fi)
+int Fila_cheia()
 {
   return 0;
 }
@@ -100,8 +100,32 @@ int remove_Fila(Fila *fi)
 
 int consulta_Fila(Fila *fi, struct aluno *al)
 {
-  if (fi == NULL || fi->inicio == NULL)
+  if (fi == NULL)
+    return -1;
+  if (fi->inicio == NULL)
     return 0;
+
   *al = fi->inicio->dados;
   return 1;
+}
+
+void imprime_Fila(Fila *fi)
+{
+  if (fi == NULL)
+    return;
+  Elem *no = fi->inicio;
+
+  printf("======== FILA ========\n");
+  while (no != NULL)
+  {
+    printf("\nNome: %s\n", no->dados.nome);
+    printf("Matricula: %d\n", no->dados.matricula);
+    printf("Notas:\n");
+    printf("\tN1: %.2f\n", no->dados.n1);
+    printf("\tN2: %.2f\n", no->dados.n2);
+    printf("\tN3: %.2f\n", no->dados.n3);
+    printf("---------------------------------------------------------\n");
+
+    no = no->prox;
+  }
 }

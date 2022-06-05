@@ -14,4 +14,5 @@ int insere_Fila(Fila *fi, struct aluno al);
 int remove_Fila(Fila *fi);
 int tamanho_Fila(Fila *fi);
 int Fila_vazia(Fila *fi);
-int Fila_cheia(Fila *fi);
+int Fila_cheia();
+void imprime_Fila(Fila *fi);
