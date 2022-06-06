@@ -150,17 +150,11 @@ int copiaPilha(Pilha *pilha, Pilha *copia)
 
   while (aux->topo != -1)
   {
-    printf("\n%d", aux->topo);
-    printf("\naqui 2");
     struct aluno aluno;
     stackpop(aux, &aluno);
-    printf("\naqui 3");
     push(pilha, aluno);
-    printf("\naqui 4");
     push(copia, aluno);
-    printf("\naqui 5");
     pop(aux);
-    printf("\naqui 6");
   }
   liberaPilha(aux);
   return 1;
