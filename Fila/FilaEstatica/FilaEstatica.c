@@ -1,4 +1,5 @@
-// FilaEstatica.c
+// JEAN MOREIRA BORGES DE MORAIS - 20201043021
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "FilaEstatica.h"
