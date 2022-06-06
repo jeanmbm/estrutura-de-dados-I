@@ -1,3 +1,5 @@
+// JEAN MOREIRA BORGES DE MORAIS - 20201043021
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "PilhaEstatica.c"
@@ -95,6 +97,7 @@ int main()
 
     case 4:
       aux = stackpop(pilha, &alunoStackpop);
+
       if (aux == -1)
       {
         printf("\nA pilha e nula");
@@ -161,6 +164,7 @@ int main()
       printf("\n\n=========================== PILHA COPIA =====================================\n");
       imprimePilha(pilhaCopia);
       break;
+
     case 0:
       saida = 0;
       liberaPilha(pilha);

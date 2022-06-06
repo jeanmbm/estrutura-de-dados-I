@@ -1,3 +1,5 @@
+// JEAN MOREIRA BORGES DE MORAIS - 20201043021
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "PilhaEstatica.h"
@@ -128,7 +130,7 @@ int concatenaPilha(Pilha *pilha1, Pilha *pilha2)
   }
 }
 
-int *copiaPilha(Pilha *pilha, Pilha *copia)
+int copiaPilha(Pilha *pilha, Pilha *copia)
 {
   if (pilha == NULL)
     return -1;

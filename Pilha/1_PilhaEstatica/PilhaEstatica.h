@@ -1,3 +1,5 @@
+// JEAN MOREIRA BORGES DE MORAIS - 20201043021
+
 #define MAXPILHA 50
 
 struct aluno
@@ -19,4 +21,4 @@ int isEmpty(Pilha *pilha);
 int isFull(Pilha *pilha);
 void imprimePilha(Pilha *pilha);
 int concatenaPilha(Pilha *pilha1, Pilha *pilha2);
-// Pilha *invertePilha(Pilha *p);
+int copiaPilha(Pilha *pilha, Pilha *copia);
